@@ -97,13 +97,18 @@ $game = Get-GamePath
 $json = Join-Path $game 'ProjectZomboid64.json'
 $runtimeRoot = Join-Path $env:USERPROFILE 'Zomboid\CinematicLoadingScreen'
 $statePath = Join-Path $runtimeRoot 'state.json'
-$sourceAgent = Join-Path $PSScriptRoot 'runtime\CinematicLoadingScreenAgent.jar'
+$payloadRoot = if ((Split-Path $PSScriptRoot -Leaf) -ieq 'installer') {
+    [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+} else {
+    $PSScriptRoot
+}
+$sourceAgent = Join-Path $payloadRoot 'runtime\CinematicLoadingScreenAgent.jar'
 $agentPath = Join-Path $runtimeRoot 'CinematicLoadingScreenAgent.jar'
 $assetRoot = Join-Path $runtimeRoot 'assets'
 $frameRoot = Join-Path $runtimeRoot 'frames'
-$sourceAudio = Join-Path $PSScriptRoot 'runtime\loading_audio.ogg'
-$sourceFrames = Join-Path $PSScriptRoot 'runtime\frames'
-$modSource = Join-Path $PSScriptRoot 'mods\CinematicLoadingScreen'
+$sourceAudio = Join-Path $payloadRoot 'runtime\loading_audio.ogg'
+$sourceFrames = Join-Path $payloadRoot 'runtime\frames'
+$modSource = Join-Path $payloadRoot 'mods\CinematicLoadingScreen'
 $modTarget = Join-Path $env:USERPROFILE 'Zomboid\mods\CinematicLoadingScreen'
 
 if (-not (Test-Path $sourceAgent)) { throw "Missing runtime: $sourceAgent" }
@@ -144,7 +149,7 @@ if (Test-Path $frameRoot) {
 New-Item -ItemType Directory -Path $frameRoot -Force | Out-Null
 Copy-Item (Join-Path $sourceFrames 'frame_*.jpg') $frameRoot -Force
 
-$isWorkshopInstall = $PSScriptRoot -match '(?i)[\\/]steamapps[\\/]workshop[\\/]content[\\/]108600[\\/]\d+[\\/]?$'
+$isWorkshopInstall = $payloadRoot -match '(?i)[\\/]steamapps[\\/]workshop[\\/]content[\\/]108600[\\/]\d+[\\/]?$'
 $localModInstalled = $false
 
 if (-not $isWorkshopInstall) {
