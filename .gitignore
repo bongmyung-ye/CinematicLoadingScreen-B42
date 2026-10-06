@@ -1,0 +1,10 @@
+runtime/frames/
+runtime/loading_audio.ogg
+preview.png
+poster.png
+.vscode/
+.idea/
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
