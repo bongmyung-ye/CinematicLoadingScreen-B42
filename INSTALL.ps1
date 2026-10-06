@@ -108,7 +108,7 @@ $assetRoot = Join-Path $runtimeRoot 'assets'
 $frameRoot = Join-Path $runtimeRoot 'frames'
 $sourceAudio = Join-Path $payloadRoot 'runtime\loading_audio.ogg'
 $sourceFrames = Join-Path $payloadRoot 'runtime\frames'
-$modSource = Join-Path $payloadRoot 'mods\CinematicLoadingScreen'
+$modSource = $payloadRoot
 $modTarget = Join-Path $env:USERPROFILE 'Zomboid\mods\CinematicLoadingScreen'
 
 if (-not (Test-Path $sourceAgent)) { throw "Missing runtime: $sourceAgent" }
@@ -148,8 +148,7 @@ if (Test-Path $frameRoot) {
 }
 New-Item -ItemType Directory -Path $frameRoot -Force | Out-Null
 Copy-Item (Join-Path $sourceFrames 'frame_*.jpg') $frameRoot -Force
-
-$isWorkshopInstall = $payloadRoot -match '(?i)[\\/]steamapps[\\/]workshop[\\/]content[\\/]108600[\\/]\d+[\\/]?$'
+$isWorkshopInstall = $payloadRoot -match '(?i)[\\/]steamapps[\\/]workshop[\\/]content[\\/]108600[\\/]\d+(?:[\\/]|$)'
 $localModInstalled = $false
 
 if (-not $isWorkshopInstall) {
