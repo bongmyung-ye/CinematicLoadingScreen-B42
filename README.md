@@ -1,4 +1,12 @@
-﻿# Cinematic Loading Screen
+# Cinematic Loading Screen
+
+## Download
+
+**[Download Install.bat](https://github.com/bongmyung-ye/CinematicLoadingScreen-B42/releases/latest/download/Install.bat)**
+
+Subscribe to Cinematic Loading Screen on the Steam Workshop first, then download and run `Install.bat` once
+
+Steam 창작마당에서 Cinematic Loading Screen을 먼저 구독한 뒤 `Install.bat`을 다운로드하여 한 번 실행해 주세요
 
 A loading screen replacement for Project Zomboid Build 42
 Plays a full-screen looping video with synchronized audio while the game is loading
