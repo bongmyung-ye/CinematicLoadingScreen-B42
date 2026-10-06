@@ -103,7 +103,7 @@ $assetRoot = Join-Path $runtimeRoot 'assets'
 $frameRoot = Join-Path $runtimeRoot 'frames'
 $sourceAudio = Join-Path $PSScriptRoot 'runtime\loading_audio.ogg'
 $sourceFrames = Join-Path $PSScriptRoot 'runtime\frames'
-$modSource = Join-Path $PSScriptRoot 'Contents\mods\CinematicLoadingScreen'
+$modSource = Join-Path $PSScriptRoot 'mods\CinematicLoadingScreen'
 $modTarget = Join-Path $env:USERPROFILE 'Zomboid\mods\CinematicLoadingScreen'
 
 if (-not (Test-Path $sourceAgent)) { throw "Missing runtime: $sourceAgent" }
