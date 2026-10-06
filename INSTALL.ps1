@@ -114,7 +114,7 @@ $modTarget = Join-Path $env:USERPROFILE 'Zomboid\mods\CinematicLoadingScreen'
 if (-not (Test-Path $sourceAgent)) { throw "Missing runtime: $sourceAgent" }
 if (-not (Test-Path $sourceAudio)) { throw "Missing audio: $sourceAudio" }
 if (-not (Test-Path $sourceFrames)) { throw "Missing frames: $sourceFrames" }
-if (-not (Test-Path (Join-Path $modSource '42.0\mod.info'))) { throw 'Mod metadata is missing.' }
+if (-not (Test-Path (Join-Path $modSource 'mod.info'))) { throw 'Mod metadata is missing.' }
 
 $frameCount = (Get-ChildItem $sourceFrames -Filter 'frame_*.jpg' -File).Count
 if ($frameCount -ne 3696) {
